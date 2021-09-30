@@ -1,3 +1,16 @@
+/* verification */
+.erreur {
+  font-size: 50%;
+  color: red;
+  
+}
+
+.form_erreur {
+  border: solid #f00020 0.19rem
+}
+
+
+
 :root {
   --font-default: "DM Sans", Arial, Helvetica, sans-serif;
   --font-slab: var(--font-default);
@@ -333,6 +346,8 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+
 /* custom select styles */
 .custom-select {
   position: relative;
