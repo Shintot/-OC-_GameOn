@@ -52,7 +52,7 @@
         </button>
       </div>
 
-      <div class="bground ">
+      <div class="bground" id="bground1" style="display: block;">
         <div class="content">
           <span class="close" id="close-modal"></span>
           <div class="modal-body">
@@ -109,7 +109,7 @@
               <div
                 class="formData">
                 <label>À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99" >
                 <span  class="erreur" id="erreur_question"></span>
               </div>
               <p class="text-label">Quelles villes ?</p>
@@ -211,22 +211,21 @@
                 class="button"
                 value="C'est parti"
               />
-              <div class="bground-thank" style="display: none;">
-                <div class="content-thank">
-                  <span class="close" id="closethanks"></span>
-                  <div class="thank-body">
-                    <p class="text-thank">Merci !<br> Votre réservation a bien été reçue.</p>
-                  </div>
-                  <input type="submit" class="btn-submit button-thank" value="Fermer">
-                </div>
-              </div>
+              
             </form>
           </div>
         </div>
       </div>
-
-      <div class="thank">
-
+      <div class="container-confirmation-submit" style="display: none;">
+        <div class="submitted-form">
+          <span class="close"></span>
+          <p class="confirmation-texte">
+            Merci !
+            <br>
+            Votre réservation a été reçue.
+          </p>
+          <button id="close-btn-confirmation"> Fermer</button>
+        </div>
       </div>
     </main>
     <footer>

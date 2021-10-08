@@ -8,12 +8,12 @@ function editNav() {
 }
 
 // DOM Elements ----------------------------------------------------------------------
-const modalbg = document.querySelector(".bground");
+const modalbg = document.querySelector("#bground1");
 const modalBtn = document.querySelector(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 const thankBtn = document.querySelectorAll(".thank-btn");
-const thankBg = document.querySelector(".bground-thank");
-const closeModalBtn=document.querySelector("#close-modal")
+const closeModalBtn = document.querySelector("#close-modal")
+const cestparti = document.querySelector("#submit")
 
 
 // validation  ----------------------------------------------------------------
@@ -46,63 +46,80 @@ document.querySelector("#inscription").addEventListener("submit", function(e) {
     errPrenom.textContent = "veuillez renseigner un prenom";
     prenom.classList.add ("form_erreur")
   }else {
-    prenom.style.border = 'solid #008000 0.19rem';
+    prenom.classList.add ("form_valid")
     errPrenom.textContent = "";
   }
 
   if (!nom.value.match(regex)) {
     errNom.textContent = "veuillez renseigner un nom";
-    nom.style.border = 'solid #f00020 0.19rem';
+    nom.classList.add ("form_erreur")
   }else {
-    nom.style.border = 'solid #008000 0.19rem';
+    nom.classList.add ("form_valid")
     errNom.textContent = "";
   }
 
   if (!email.value.match(regexemail)) {
     erremail.textContent = "veuillez renseigner un email";
-    email.style.border = 'solid #f00020 0.19rem';
+    email.classList.add ("form_erreur")
   }else {
-    email.style.border = 'solid #008000 0.19rem';
+    email.classList.add ("form_valid")
     erremail.textContent = "";
   }
 
   if (!date.value) {
     errdate.textContent = "veuillez renseigner une date";
-    date.style.border = 'solid #f00020 0.19rem';
+    date.classList.add ("form_erreur")
   }else {
-    date.style.border = 'solid #008000 0.19rem';
+    date.classList.add ("form_valid")
     errdate.textContent = "";
   }
 
   if (!question.value) {
     errquestion.textContent = "veuillez répondre à la question ";
-    question.style.border = 'solid #f00020 0.19rem';
+    question.classList.add ("form_erreur")
   }else {
-    question.style.border = 'solid #008000 0.19rem';
+    question.classList.add ("form_valid")
     errquestion.textContent = "";
   }
 
+  if (!ville.value) {
+    errville.textContent = "veuillez choisir une ville ";
+  }else {
+    errville.textContent = "";
+  }
 
-  // v ou(||) f : v
-  // v et(&&) V : v
-  //v et f : f
-  
-
-
+    
   if (nom.value && prenom.value && email.value && date.value && question.value ) {
     alert("Tres bien");
-    nom.value=""
+    displayModalSubmit()  
     
-    closeModal()
   } 
   
 })
+
+let locationcoche = false 
+modalbg.addEventListener("input", function (e) {
+  if(e.target.name==="location"){
+    locationcoche=e.target.checked
+  }
+})
+
+
+
+
 
 // fermer le formulaire ----------------------------------------------------------------
 
   // launch modal event
   modalBtn.addEventListener("click",launchModal);
   closeModalBtn.addEventListener("click", closeModal)
+  
+
+  // DISPLAY MODAL SUBMIT
+  function displayModalSubmit() {
+  modalbg.style.display = 'none';
+  thankBg.style.display = 'block';
+  }
 
   // function
   function launchModal() {
@@ -111,6 +128,17 @@ document.querySelector("#inscription").addEventListener("submit", function(e) {
 
   function closeModal(){
   modalbg.style.display="none";
+  
+  }
+// ----------------------------------------------------------------------------------------
+
+// confirmation formulaire
+  const modalSubmit = document.querySelector('.container-confirmation-submit');
+
+  // confirmation 
+  function displayModalSubmit() {
+      modalbg.style.display = 'none';
+      modalSubmit.style.display = 'block';
   }
 
-
+// ----------------------------------------------------------------------------------------
