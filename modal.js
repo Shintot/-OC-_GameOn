@@ -11,10 +11,16 @@ function editNav() {
 const modalbg = document.querySelector("#bground1");
 const modalBtn = document.querySelector(".modal-btn");
 const formData = document.querySelectorAll(".formData");
-const thankBtn = document.querySelectorAll(".thank-btn");
 const closeModalBtn = document.querySelector("#close-modal")
 const cestparti = document.querySelector("#submit")
 
+// check ville  ----------------------------------------------------------------
+let lieucoche = false 
+modalbg.addEventListener("input", function (e) {
+  if(e.target.name==="location"){
+    lieucoche=e.target.checked
+  }
+})
 
 // validation  ----------------------------------------------------------------
 document.querySelector("#inscription").addEventListener("submit", function(e) {
@@ -82,7 +88,7 @@ document.querySelector("#inscription").addEventListener("submit", function(e) {
     errquestion.textContent = "";
   }
 
-  if (!ville.value) {
+  if (lieucoche===false) {
     errville.textContent = "veuillez choisir une ville ";
   }else {
     errville.textContent = "";
@@ -90,36 +96,20 @@ document.querySelector("#inscription").addEventListener("submit", function(e) {
 
     
   if (nom.value && prenom.value && email.value && date.value && question.value ) {
-    alert("Tres bien");
     displayModalSubmit()  
     
   } 
   
 })
 
-let locationcoche = false 
-modalbg.addEventListener("input", function (e) {
-  if(e.target.name==="location"){
-    locationcoche=e.target.checked
-  }
-})
-
-
-
-
 
 // fermer le formulaire ----------------------------------------------------------------
 
   // launch modal event
   modalBtn.addEventListener("click",launchModal);
-  closeModalBtn.addEventListener("click", closeModal)
+  closeModalBtn.addEventListener("click", closeModal);
   
-
-  // DISPLAY MODAL SUBMIT
-  function displayModalSubmit() {
-  modalbg.style.display = 'none';
-  thankBg.style.display = 'block';
-  }
+  
 
   // function
   function launchModal() {
@@ -128,8 +118,9 @@ modalbg.addEventListener("input", function (e) {
 
   function closeModal(){
   modalbg.style.display="none";
-  
   }
+
+
 // ----------------------------------------------------------------------------------------
 
 // confirmation formulaire
@@ -140,5 +131,13 @@ modalbg.addEventListener("input", function (e) {
       modalbg.style.display = 'none';
       modalSubmit.style.display = 'block';
   }
+
+  const thankBtn = document.querySelector("#close-btn-confirmation");
+
+  thankBtn.addEventListener("click", closemodalconfirm);
+
+  function closemodalconfirm() {
+    modalSubmit.style.display = 'none';
+}
 
 // ----------------------------------------------------------------------------------------
