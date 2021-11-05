@@ -9,7 +9,8 @@ function editNav() {
 
 // DOM Elements ----------------------------------------------------------------------
 const modalbg = document.querySelector("#bground1");
-const modalBtn = document.querySelector(".modal-btn");
+const modalBtn = document.querySelector("#modal-btn");
+const modalBtnphone = document.querySelector("#modal-btnphone");
 const formData = document.querySelectorAll(".formData");
 const closeModalBtn = document.querySelector("#close-modal")
 const cestparti = document.querySelector("#submit")
@@ -17,8 +18,18 @@ const cestparti = document.querySelector("#submit")
 // check ville  ----------------------------------------------------------------
 let lieucoche = false 
 modalbg.addEventListener("input", function (e) {
+  e.preventDefault();
   if(e.target.name==="location"){
     lieucoche=e.target.checked
+  }
+})
+
+// check conditions ----------------------------------------------------------------
+let conditions = false 
+modalbg.addEventListener("input", function (e) {
+  e.preventDefault();
+  if(e.target.name==="checkbox"){
+    conditions=e.target.checked
   }
 })
 
@@ -45,6 +56,7 @@ document.querySelector("#inscription").addEventListener("submit", function(e) {
   const errdate=document.querySelector("#erreur_date")
   const errquestion=document.querySelector("#erreur_question")
   const errville=document.querySelector("#erreur_ville")
+  const errconditions=document.querySelector("#erreur_conditions")
   
   
     
@@ -94,24 +106,33 @@ document.querySelector("#inscription").addEventListener("submit", function(e) {
     errville.textContent = "";
   }
 
+  if (conditions===false) {
+    errconditions.textContent = "veuillez lire et accepter les conditions d'utilisation ";
+  }else {
+    errconditions.textContent = "";
+  }
+
     
-  if (nom.value && prenom.value && email.value && date.value && question.value ) {
-    displayModalSubmit()  
-    
+  if (nom.value && prenom.value && email.value && date.value && question.value && lieucoche && conditions ) {
+    displayModalSubmit() 
+        
   } 
   
 })
 
 
-// fermer le formulaire ----------------------------------------------------------------
+// fermer/ouvrir le formulaire ----------------------------------------------------------------
 
   // launch modal event
   modalBtn.addEventListener("click",launchModal);
   closeModalBtn.addEventListener("click", closeModal);
   
+  //pour version mobile 
+  modalBtnphone.addEventListener("click",launchModal);
   
 
   // function
+
   function launchModal() {
   modalbg.style.display = "block";
   }
@@ -138,6 +159,7 @@ document.querySelector("#inscription").addEventListener("submit", function(e) {
 
   function closemodalconfirm() {
     modalSubmit.style.display = 'none';
+    
 }
 
 // ----------------------------------------------------------------------------------------

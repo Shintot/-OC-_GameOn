@@ -40,27 +40,25 @@
             Vous aimez jouer ? Notre prochain évènement gaming est ouvert
             aux réservations... Places limitées !
           </p>
-          <button class="btn-signup modal-btn">
+          <button class="btn-signup modal-btn" id="modal-btn">
             je m'inscris
           </button>
         </div>
         <div class="hero-img">
           <img src="./bg_img.jpg" alt="img" />
         </div>
-        <button class="btn-signup modal-btn">
+        <button class="btn-signup modal-btn" id="modal-btnphone">
           je m'inscris
         </button>
       </div>
 
-      <div class="bground" id="bground1" style="display: block;">
+      <div class="bground" id="bground1" style="display: block;" onclick="resetForm();">
         <div class="content">
           <span class="close" id="close-modal"></span>
           <div class="modal-body">
             <form
               name="reserve"
-              
-              id="inscription"
-              
+              id="inscription" 
             >
               <div
                 class="formData">
@@ -70,6 +68,7 @@
                   type="text"
                   id="first"
                   name="first"
+                  minlength="3"
                 /><br>
                 <span  class="erreur" id="erreur_prenom"></span>
               </div>
@@ -189,16 +188,17 @@
                 <input
                   class="checkbox-input"
                   type="checkbox"
+                  name="checkbox"
                   id="checkbox1"
-                  checked
+                  
                 />
                 <label class="checkbox2-label" for="checkbox1" required>
                   <span class="checkbox-icon"></span>
                   J'ai lu et accepté les conditions d'utilisation.
                 </label><br>
-                <span  class="erreur2" id="erreur7"></span>
+                <div><span  class="erreur" id="erreur_conditions"></span></div>
                 <input class="checkbox-input" type="checkbox" id="checkbox2" />
-                <label class="checkbox2-label" for="checkbox2">
+                <label class="checkbox2-label" for="checkbox2" name="checkbox">
                   <span class="checkbox-icon"></span>
                   Je souhaite être prévenu des prochains évènements.
                 </label>
@@ -210,6 +210,7 @@
                 type="submit"
                 class="button"
                 value="C'est parti"
+                onclick="resetForm();"
               />
               
             </form>

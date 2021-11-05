@@ -6,6 +6,12 @@
     color: red;
   }
 
+  .erreur2 {
+    font-size: 50%;
+    color: red;
+    
+  }
+
   /*bordure erreur */
   .form_erreur {
     border: solid #f00020 0.19rem
@@ -13,6 +19,10 @@
 
   .form_valid {
     border: solid #09aa04 0.19rem
+  }
+
+  .formData2 {
+    width: 90% ;
   }
 /*--------------------------------------------------------- */
 
